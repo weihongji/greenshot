@@ -65,6 +65,9 @@ namespace Greenshot.Configuration {
 		[IniProperty("TornEdgeEffectSettings", Description = "Settings for the torn edge effect.")]
 		public TornEdgeEffect TornEdgeEffectSettings { get; set; }
 
+		[IniProperty("BorderEffectSettings", Description = "Settings for the border effect. Key:BorderEffect|Color:203,203,203|Width:1")]
+		public BorderEffect BorderEffectSettings { get; set; }
+
 		public override void AfterLoad() {
 			base.AfterLoad();
 			if (RecentColors == null) {

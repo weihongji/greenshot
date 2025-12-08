@@ -19,15 +19,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using System.ComponentModel;
+using Greenshot.Core;
+using GreenshotPlugin.Core;
 using System.Drawing;
 using System.Drawing.Drawing2D;
-using GreenshotPlugin.Core;
 
 namespace GreenshotPlugin.Effects
 {
 	/// <summary>
 	/// BorderEffect
 	/// </summary>
+	[TypeConverter(typeof(EffectConverter))]
 	public class BorderEffect : IEffect {
 		public BorderEffect() {
 			Reset();
@@ -40,9 +43,11 @@ namespace GreenshotPlugin.Effects
 			get;
 			set;
 		}
+		public string Key { get; set; }
 		public void Reset() {
 			Width = 2;
 			Color = Color.Black;
+			Key = "BorderEffect";
 		}
 		public Image Apply(Image sourceImage, Matrix matrix) {
 			return ImageHelper.CreateBorder(sourceImage, Width, Color, sourceImage.PixelFormat, matrix);
